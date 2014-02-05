@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/object">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/水果">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	<subClassOf xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/object"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/熱帶水果">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	<subClassOf xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/水果"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/object">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/顏色">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	<subClassOf xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/object"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/暗色系">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	<subClassOf xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/顏色"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/蘋果">
+	<rdf:type rdf:resource="http://asus.com/onto/entity/熱帶水果"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/暗紅色">
+	<rdf:type rdf:resource="http://asus.com/onto/entity/暗色系"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/水果">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/顏色">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/relation/有">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<domain xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/水果"/>
+	<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/顏色"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/熱帶水果">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/暗色系">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/relation/有">
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<domain xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/熱帶水果"/>
+	<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://asus.com/onto/entity/暗色系"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://asus.com/onto/entity/蘋果">
+	<是 xmlns="http://asus.com/onto/relation/" rdf:resource="http://asus.com/onto/entity/暗紅色"/>
+</rdf:Description>
+
+</rdf:RDF>
