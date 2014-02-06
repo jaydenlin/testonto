@@ -22,54 +22,58 @@ public class testonto {
 
 	public static void main(String[] args) {
 
+		ExcelToOnto(args[0],1,args[2]);
+
+	}
+	
+	static void ExcelToOnto(String excelFilePath,int sheetIndex,String outputRDFFileName){
 		// set up excel
-		String filePath = args[0];
-		XSSFWorkbook xwb = null;
-		try {
-			xwb = new XSSFWorkbook(filePath);
-		} catch (IOException e) {
-			System.out.println("讀取excel失敗");
-			e.printStackTrace();
-		}
+				String filePath = excelFilePath;//set path
+				XSSFWorkbook xwb = null;
+				try {
+					xwb = new XSSFWorkbook(filePath);
+				} catch (IOException e) {
+					System.out.println("讀取excel失敗");
+					e.printStackTrace();
+				}
 
-		// read data form excel
-		XSSFSheet sheet = xwb.getSheetAt(3);
-		// Domain
-		String domain = sheet.getRow(0).getCell(1).getStringCellValue();
-		// Topic
-		String topic = sheet.getRow(1).getCell(1).getStringCellValue();
-		
-		///////////////
-		// write into ontology
-		//////////////
-		
-		String URI = "http://asus.com/onto/";
-		String fileName = args[1];
-		ONTO onto = new ONTO();
-		onto.createRDF(URI);
+				// read data form excel
+				XSSFSheet sheet = xwb.getSheetAt(sheetIndex);//get sheet
+				// Domain
+				String domain = sheet.getRow(0).getCell(1).getStringCellValue();
+				// Topic
+				String topic = sheet.getRow(1).getCell(1).getStringCellValue();
+				
+				///////////////
+				// write into ontology
+				//////////////
+				
+				String URI = "http://asus.com/onto/";
+				String fileName = outputRDFFileName;//set file name
+				ONTO onto = new ONTO();
+				onto.createRDF(URI);
 
-		// setup class
-		List<String> entityClass1 = readAndSetClass(onto, sheet, 1);
-		List<String> relationClass = readClassRelation(onto, sheet);
-		List<String> entityClass2 = readAndSetClass(onto, sheet, 3);
+				// setup class
+				List<String> entityClass1 = readAndSetClass(onto, sheet, 1);
+				List<String> relationClass = readClassRelation(onto, sheet);
+				List<String> entityClass2 = readAndSetClass(onto, sheet, 3);
 
-		// setup instance
-		List<String> entityInstance1 = readAndSetInstance(onto, sheet, 1,
-				entityClass1.get(entityClass1.size() - 1));
-		List<String> relationInstance = readInstanceRelation(onto, sheet);
-		List<String> entityInstance2 = readAndSetInstance(onto, sheet, 3,
-				entityClass2.get(entityClass2.size() - 1));
+				// setup instance
+				List<String> entityInstance1 = readAndSetInstance(onto, sheet, 1,
+						entityClass1.get(entityClass1.size() - 1));
+				List<String> relationInstance = readInstanceRelation(onto, sheet);
+				List<String> entityInstance2 = readAndSetInstance(onto, sheet, 3,
+						entityClass2.get(entityClass2.size() - 1));
 
-		// set class relation
-		setRelation(onto, entityClass1, relationClass, entityClass2, true);
-		
-		// set instance relation
-		setRelation(onto, entityInstance1, relationInstance, entityInstance2,
-				false);
+				// set class relation
+				setRelation(onto, entityClass1, relationClass, entityClass2, true);
+				
+				// set instance relation
+				setRelation(onto, entityInstance1, relationInstance, entityInstance2,
+						false);
 
-		onto.writeAndClose(fileName);
-		onto.closeRDF();
-
+				onto.writeAndClose(fileName);
+				onto.closeRDF();
 	}
 
 	static List<String> readAndSetClass(ONTO onto, XSSFSheet sheet,
